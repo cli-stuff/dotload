@@ -104,7 +104,7 @@ jobs:
         run: make checksum
 
       - name: ⬆️ Upload files to release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: |
             dotload/bin/dotload
