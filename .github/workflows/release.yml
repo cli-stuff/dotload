@@ -53,7 +53,7 @@ jobs:
           # Get version from tag
           tag="${{ github.ref_name }}"
           release_version=$(echo "$tag" | sed 's/v//g')
-          changes="You can view the changes at this link - https://github.com/okineadev/dotload/releases/tag/$tag"
+          changes="You can view the changes at this link - https://github.com/cli-stuff/dotload/releases/tag/$tag"
 
           # ugly syntax
           echo "::group::Building deb-package"

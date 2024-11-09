@@ -8,7 +8,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <a href="https://github.com/okineadev/dotload">
+  <a href="https://github.com/cli-stuff/dotload">
     <!-- https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#specifying-the-theme-an-image-is-shown-to -->
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="../../public/banner-dark.png" alt="Banner">
@@ -25,9 +25,9 @@
     </p>
     <a href="#%EF%B8%8F-Instalacja"><b>Instalacja</b></a>
     ·
-    <a href="https://github.com/okineadev/dotload/issues/new?labels=bug&template=bug_report.md"><b>Zgłoś błąd</b></a>
+    <a href="https://github.com/cli-stuff/dotload/issues/new?labels=bug&template=bug_report.md"><b>Zgłoś błąd</b></a>
     ·
-    <a href="https://github.com/okineadev/dotload/issues/new?labels=enhancement&template=feature_request.md"><b>Poproś o funkcję</b></a>
+    <a href="https://github.com/cli-stuff/dotload/issues/new?labels=enhancement&template=feature_request.md"><b>Poproś o funkcję</b></a>
 </div>
 
 <a href="../../README.md"><img
@@ -135,7 +135,8 @@ Możesz zainstalować `dotload` używając następujących menedżerów pakietó
   1. Sklonuj repozytorium
 
   ``bash
-  git clone https://github.com/okineadev/dotload.git --depth=1
+  git clone <https://github.com/cli-stuff/dotload.git> --depth=1
+
   ```
 
   2. Przejdź do folderu projektu
@@ -150,6 +151,7 @@ Możesz zainstalować `dotload` używając następujących menedżerów pakietó
 
   ``bash
   sudo apt install make
+
   ```
 
   Istnieje również wsparcie dla [**task**](https://taskfile.dev/).
@@ -198,7 +200,7 @@ bash <(curl -sL https://cutt.ly/dotload) @nazwa_użytkownika
 
 ### Tabela zgodności
 
-| <div><img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" alt="Linux logo" width="30"/></div> **Linux** | <div><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Termux.svg" alt="Termux logo" width="30"/></div> **Termux** | <div><img src="../../public/macos-dark-logo.svg#gh-light-mode-only" alt="macOS logo" width="30"/><img src="../../public/macos-light-logo.svg#gh-dark-mode-only" alt="macOS logo" width="30"/></div> **macOS** | <div><img src="https://github.com/okineadev/dotload/assets/81070564/99544c04-51e7-41b5-95f7-0828cfc97617" alt="Windows logo" width="30"/></div> **Windows** (on [msys shell](https://www.msys2.org/)) |
+| <div><img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" alt="Linux logo" width="30"/></div> **Linux** | <div><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Termux.svg" alt="Termux logo" width="30"/></div> **Termux** | <div><img src="../../public/macos-dark-logo.svg#gh-light-mode-only" alt="macOS logo" width="30"/><img src="../../public/macos-light-logo.svg#gh-dark-mode-only" alt="macOS logo" width="30"/></div> **macOS** | <div><img src="https://github.com/cli-stuff/dotload/assets/81070564/99544c04-51e7-41b5-95f7-0828cfc97617" alt="Windows logo" width="30"/></div> **Windows** (on [msys shell](https://www.msys2.org/)) |
 | :-: | :-: | :-: | :-: |
 | ✅ | ✅ | ✅ | ✅ |
 
@@ -291,7 +293,7 @@ Wkład sprawia, że społeczność open-source jest tak niesamowitym miejscem do
 
 Możesz zacząć rozwijać się na [**GitHub Codespaces**][codespaces-link] od razu
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/okineadev/dotload?quickstart=1)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cli-stuff/dotload?quickstart=1)
 
 To repozytorium zawiera ⚡[**wstępnie skompilowane wersje**][about-prebuilds], które pozwalają **pominąć** instalację pakietów i narzędzi.
 
@@ -315,7 +317,7 @@ Zobacz [**LICENSE**](../../LICENSE)
 
 ## 📨 Kontakt
 
-**Telegram:** [**@Okinea**][telegram-link]
+**Telegram:** [**@okineadev**][telegram-link]
 
 ## ❤️ Wsparcie
 
@@ -328,14 +330,14 @@ Oto szczegóły dotyczące przelewów:
 - 🍩 **Donatello**: <https://donatello.to/okineadev>
 - 💎 **TON wallet**: `UQBaBIBtKJpdwc4jKSGd70LZyQnEf-Nx5edzZlZAAGkHnZ7E`
 
-[github-release-date]: https://img.shields.io/github/release-date/okineadev/dotload
-[github-release-page]: https://github.com/okineadev/dotload/releases/latest
-[github-workflow-status]: https://github.com/okineadev/dotload/actions/workflows/release.yml/badge.svg
-[github-workflow-runs]: https://github.com/okineadev/dotload/actions/workflows/release.yml
-[github-license]: https://img.shields.io/github/license/okineadev/dotload
+[github-release-date]: https://img.shields.io/github/release-date/cli-stuff/dotload
+[github-release-page]: https://github.com/cli-stuff/dotload/releases/latest
+[github-workflow-status]: https://github.com/cli-stuff/dotload/actions/workflows/release.yml/badge.svg
+[github-workflow-runs]: https://github.com/cli-stuff/dotload/actions/workflows/release.yml
+[github-license]: https://img.shields.io/github/license/cli-stuff/dotload
 [made-with-love]: https://img.shields.io/badge/made_with-%E2%9D%A4%EF%B8%8F-white
-[github-stars]: https://img.shields.io/github/stars/okineadev/dotload
+[github-stars]: https://img.shields.io/github/stars/cli-stuff/dotload
 [codespaces-link]: https://github.com/features/codespaces
 [about-prebuilds]: https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds
-[telegram-link]: https://t.me/okinea 'Telegram link'
+[telegram-link]: https://t.me/okineadev 'Telegram link'
 [mit-license-link]: https://opensource.org/license/MIT

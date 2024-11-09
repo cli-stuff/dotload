@@ -20,7 +20,7 @@ hyperlink() {
 }
 
 # Prints the header for the dotload script
-echo -e "$NOTES\e[1m($(hyperlink "https://github.com/okineadev/dotload" "GitHub"))\e[0m"
+echo -e "$NOTES\e[1m($(hyperlink "https://github.com/cli-stuff/dotload" "GitHub"))\e[0m"
 echo ""
 
 error_msg() {
@@ -40,8 +40,8 @@ error_msg() {
 validate() {
     local validate_type="$1"
     local string="$2"
-    local pretty_name;
-    local max_lenght;
+    local pretty_name
+    local max_lenght
     local check_punctuations="true"
 
     if [[ "$1" == "username" ]]; then
@@ -175,9 +175,9 @@ dotload() {
         fi
     fi
 
-    local username;
-    local repo_url;
-    local repo_name;
+    local username
+    local repo_url
+    local repo_name
 
     if [[ $(echo "$1" | grep -E '^((http[s]://|^)(\S+\.\S+)*/|git@\S+\.\S+:)\S+/\S+(\.git|$)$') ]]; then
         if [[ $(echo "$1" | grep -E '^[a-zA-Z0-9-]+\.[a-zA-Z]+(/[a-zA-Z0-9-]+){2}(\.git|$)$') ]]; then
@@ -358,7 +358,6 @@ print_usage() {
     echo "  dotload https://github.com/username/dotfiles dev-branch"
     echo ""
 }
-
 
 # Function to print the help information for the dotload script
 print_dotload_help() {

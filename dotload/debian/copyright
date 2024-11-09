@@ -1,5 +1,5 @@
 Upstream-Name: dotload
-Source: https://github.com/okineadev/dotload/
+Source: <https://github.com/cli-stuff/dotload/>
 Build-Depends: debhelper (>= 12)
 
 Files: *

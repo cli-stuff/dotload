@@ -9,7 +9,7 @@ fi
 
 release_info="$PREFIX/etc/os-release"
 
-os_name () {
+os_name() {
     if [[ -f /etc/os-release ]]; then
         grep -Po '(?<=PRETTY_NAME=").*?(?=")' "$release_info"
     elif [[ "$(uname -o)" == "Android" ]]; then
@@ -21,31 +21,31 @@ os_name () {
 
 # noqa
 uriencode() {
-  s="${1//'%'/%25}"
-  s="${s//$'\n'/%0A}"
-  s="${s//'"'/%22}"
-  s="${s//$'\r'/%0D}"
-  s="${s//'#'/%23}"
-  s="${s//'$'/%24}"
-  s="${s//'&'/%26}"
-  s="${s//'+'/%2B}"
-  s="${s//' '/+}"
-  s="${s//','/%2C}"
-  s="${s//'/'/%2F}"
-  s="${s//':'/%3A}"
-  s="${s//';'/%3B}"
-  s="${s//'*'/%2A}"
-  s="${s//'='/%3D}"
-  s="${s//'?'/%3F}"
-  s="${s//'`'/%60}"
-  s="${s//'<'/%3C}"
-  s="${s//'>'/%3E}"
-  s="${s//'@'/%40}"
-  s="${s//$'\''/%27}"
-  s="${s//'!'/%21}"
-  s="${s//'['/%5B}"
-  s="${s//']'/%5D}"
-  printf %s "$s"
+    s="${1//'%'/%25}"
+    s="${s//$'\n'/%0A}"
+    s="${s//'"'/%22}"
+    s="${s//$'\r'/%0D}"
+    s="${s//'#'/%23}"
+    s="${s//'$'/%24}"
+    s="${s//'&'/%26}"
+    s="${s//'+'/%2B}"
+    s="${s//' '/+}"
+    s="${s//','/%2C}"
+    s="${s//'/'/%2F}"
+    s="${s//':'/%3A}"
+    s="${s//';'/%3B}"
+    s="${s//'*'/%2A}"
+    s="${s//'='/%3D}"
+    s="${s//'?'/%3F}"
+    s="${s//'`'/%60}"
+    s="${s//'<'/%3C}"
+    s="${s//'>'/%3E}"
+    s="${s//'@'/%40}"
+    s="${s//$'\''/%27}"
+    s="${s//'!'/%21}"
+    s="${s//'['/%5B}"
+    s="${s//']'/%5D}"
+    printf %s "$s"
 }
 
 text="\
@@ -69,9 +69,9 @@ $(cat "$LOG_FILE")
 "
 
 # This method has been deprecated due to different behavior in Linux and Termux
-# link="https://github.com/okineadev/dotload/issues/new$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "body=$text" "")&labels=bug"
+# link="https://github.com/cli-stuff/dotload/issues/new$(curl -s -o /dev/null -w %{url_effective} --get --data-urlencode "body=$text" "")&labels=bug"
 
-link="https://github.com/okineadev/dotload/issues/new/?body=$(uriencode "$text")&labels=bug"
+link="https://github.com/cli-stuff/dotload/issues/new/?body=$(uriencode "$text")&labels=bug"
 
 echo -e "\n$link\n"
 echo -e "  \e[1;32m1.\e[0m ☝️  Open this link in your browser"

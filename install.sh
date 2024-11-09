@@ -7,7 +7,7 @@
 TEMP="$PREFIX/tmp"
 TEMP_DIR="$TEMP/dotload-installer"
 LOG_FILE="$TEMP/dotload-installer.log"
-EXECUTABLE_LINK="https://github.com/okineadev/dotload/releases/latest/download/dotload"
+EXECUTABLE_LINK="https://github.com/cli-stuff/dotload/releases/latest/download/dotload"
 
 mkdir "$TEMP_DIR"
 
@@ -16,7 +16,7 @@ if [[ ! -f $LOG_FILE ]]; then
     touch "$LOG_FILE"
 else
     # Clear all logs
-    echo "" > "$LOG_FILE"
+    echo "" >"$LOG_FILE"
 fi
 
 # Modifiable prefix variable
@@ -64,7 +64,7 @@ normalize() {
 # Write the text in the log
 write_log() {
     echo -e "\e[1;32m↪\e[0m $1"
-    echo -e "$(normalize "$1")" >> "$LOG_FILE"
+    echo -e "$(normalize "$1")" >>"$LOG_FILE"
 }
 
 log() {
@@ -84,7 +84,6 @@ steps=3
 if [[ ! $SKIP_CHECKSUM_VALIDATION == "true" ]]; then
     ((steps++))
 fi
-
 
 step() {
     ((current_step++))
@@ -122,7 +121,7 @@ if [[ ! $SKIP_CHECKSUM_VALIDATION == "true" ]]; then
         write_log "✅ Checksum validated"
     else
         write_log "❌ The checksum is invalid, please try again"
-        write_log "    If the result is the same - report the error at this link: https://github.com/okineadev/dotload/issues/new?assignees=okineadev&labels=bug&template=bug_report.md&title=[Bug]:+invalid+checksum"
+        write_log "    If the result is the same - report the error at this link: https://github.com/cli-stuff/dotload/issues/new?assignees=okineadev&labels=bug&template=bug_report.md&title=[Bug]:+invalid+checksum"
 
         log rm -rf "$TEMP_DIR"
         exit 1
@@ -131,7 +130,6 @@ fi
 
 # Makes the script executable
 log chmod +x dotload
-
 
 if [[ -f "$prefix/bin/dotload" ]]; then
     step "Updating"

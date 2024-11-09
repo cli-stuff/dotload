@@ -9,9 +9,9 @@ description: |
   This tool was created to make it as **easy as possible** to install dotfiles, required development tools (such as **nodejs**, **php**, **etc**.) and other packages.
 
 title: dotload
-contact: https://t.me/okinea
-donation: https://github.com/okineadev/dotload?tab=readme-ov-file#%EF%B8%8F-support
-source-code: https://github.com/okineadev/dotload
+contact: https://t.me/okineadev
+donation: https://github.com/cli-stuff/dotload?tab=readme-ov-file#%EF%B8%8F-support
+source-code: https://github.com/cli-stuff/dotload
 license: MIT
 
 grade: stable
