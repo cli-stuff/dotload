@@ -1,81 +1,39 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC2164
+# shellcheck disable=SC2236
 
-# Folder for the installation environment
-# shellcheck disable=SC2153
-TEMP="$PREFIX/tmp"
-TEMP_DIR="$TEMP/dotload-installer"
-LOG_FILE="$TEMP/dotload-installer.log"
+# Exit on any error
+set -e
+
+TEMP_DIR="/tmp/dotload-installer"
 EXECUTABLE_LINK="https://github.com/cli-stuff/dotload/releases/latest/download/dotload"
 
-mkdir "$TEMP_DIR"
-
-if [[ ! -f $LOG_FILE ]]; then
-    # Create log file in temporary dir
-    touch "$LOG_FILE"
+# Determine the installation prefix
+if [[ ! -n "$PREFIX" ]]; then
+    if echo "$OSTYPE" | grep -qE '^darwin.*'; then
+        # The `/usr` directory in macOS is read-only, so you need to change the prefix to `/usr/local`
+        # https://github.com/openstreetmap/mod_tile/issues/349#issuecomment-1784165860
+        prefix="/usr/local"
+    else
+        prefix="/usr"
+    fi
 else
-    # Clear all logs
-    echo "" >"$LOG_FILE"
+    prefix="$PREFIX"
 fi
 
-# Modifiable prefix variable
-prefix="$PREFIX"
+# Define the sudo command, which may be empty on systems where sudo is not required
 sudo="sudo"
-pkgmgr=""
-update="update"
-install="install -y"
 
-# If Linux OS or msys (linux emulator on Windows)
-if echo "$OSTYPE" | grep -qE '^(linux-gnu|msys).*'; then
-    if [ -f '/etc/debian_version' ]; then
-        pkgmgr="apt"
-    elif [[ -f '/etc/arch-release' || "$OSTYPE" =~ ^msys.*$ ]]; then
-        pkgmgr="pacman"
-        install="-Sy --noconfirm"
-        update="-Sy"
-
-        if echo "$OSTYPE" | grep -qE '^msys.*'; then
-            # Because `sudo` in msys shell (on Windows™) are useless
-            sudo=""
-        fi
-    fi
-
-# macOS
-elif echo "$OSTYPE" | grep -qE '^darwin.*'; then
-    pkgmgr="brew"
-    install="install"
-
-    # The `/bin` directory in macOS is read-only, so you need to install the binary in `/usr/local`
-    # https://github.com/openstreetmap/mod_tile/issues/349#issuecomment-1784165860
-    prefix="/usr/local"
-
-# Termux
-elif echo "$OSTYPE" | grep -qE '^linux-android.*'; then
-    pkgmgr="pkg"
+# shellcheck disable=SC2143,SC2034
+# sudo is not required on Android or MSYS
+if echo "$OSTYPE" | grep -qE '^(linux-android|msys).*'; then
     sudo=""
 fi
 
-# Remove color markings from text (necessary to make logs cleaner)
-normalize() {
-    echo -e "$1" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"
-}
+mkdir -p "$TEMP_DIR"
 
-# Write the text in the log
-write_log() {
+print_msg() {
     echo -e "\e[1;32m↪\e[0m $1"
-    echo -e "$(normalize "$1")" >>"$LOG_FILE"
-}
-
-log() {
-    # shellcheck disable=SC2124
-    local command="$@"
-    # Executes the command, after which writes its output to the log
-    $command 2>&1 | tee -a "$LOG_FILE"
-}
-
-available() {
-    command -v $1 >/dev/null
 }
 
 current_step=0
@@ -83,18 +41,23 @@ steps=3
 
 step() {
     ((current_step++))
-    write_log "[$current_step/$steps] \e[1m$1\e[0m"
+    print_msg "[$current_step/$steps] \e[1m$1\e[0m"
 }
 
 cd "$TEMP_DIR"
 
 echo ""
 
-step "Downloading executable"
-log curl -LO --progress-bar "$EXECUTABLE_LINK"
+if ! command -v git >/dev/null; then
+    echo "Error: git is not installed"
+    echo "Please install git and run this installer again"
+    exit 1
+fi
 
-# Makes the script executable
-log chmod +x dotload
+step "Downloading executable"
+curl -LO --progress-bar "$EXECUTABLE_LINK"
+
+chmod +x dotload
 
 if [[ -f "$prefix/bin/dotload" ]]; then
     step "Updating"
@@ -102,28 +65,9 @@ else
     step "Installing"
 fi
 
-if ! available git; then
-    step "Installing dependencies"
-
-    if [[ ! -n "$pkgmgr" ]]; then
-        write_log "$pkgmgr in not defined\nPlease install \e[1mgit\e[0m manually."
-        exit 1
-    else
-        if [[ "$pkgmgr" == "brew" ]]; then
-            if ! command -v brew >/dev/null; then
-                # Code from https://brew.sh/#install
-                /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            fi
-        fi
-
-        # shellcheck disable=SC2086
-        $sudo $pkgmgr $install git
-    fi
-fi
-
-log $sudo cp dotload "$prefix/bin"
+$sudo cp "dotload" "$prefix/bin"
 
 step "Cleaning"
-log rm -rf "$TEMP_DIR"
+rm -rf "$TEMP_DIR"
 
 echo -e "\n\e[1;32mDone!\e[0m"
