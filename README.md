@@ -64,20 +64,6 @@ For example, if you have a file `~/.bashrc` on your computer and in the reposito
 You can install `dotload` using the following package managers:
 
 <details>
-  <summary><b>apt (PPA)</b></summary>
-  <br/>
-
-  You will also receive further updates with this method
-
-  ```bash
-  sudo add-apt-repository ppa:salumin/tools
-  sudo apt update
-  sudo apt install dotload
-  ```
-
-</details>
-
-<details>
   <summary><b>Homebrew</b></summary>
   <br/>
 
@@ -94,14 +80,14 @@ You can install `dotload` using the following package managers:
   📥 **Install**:
 
   ```bash
-  brew tap okineadev/dotload
+  brew tap cli-stuff/dotload
   brew install dotload
   ```
 
 </details>
 
 <details>
-  <summary><b>With install.sh (Reccommended) ✅</b></summary>
+  <summary><b>With install.sh</b></summary>
   <br/>
 
   With this method, you can install **dotload** on almost **any system**, including **Termux**
@@ -242,12 +228,6 @@ dotload --help
 # Help page...
 ```
 
-There is also support for `manpages`:
-
-```bash
-man dotload
-```
-
 ### Custom installation scripts
 
 You can also add an installation script to your `dotfiles` repository to fully automate the installation and get more features
@@ -270,19 +250,6 @@ If none of these files are found, then any files or folders in your selected dot
 You can also **specify a custom installation script**
 or make it optional in `dotload.conf`, for this read the [**dotload.conf documentation**](docs/dotload_conf.md)
 
-## 🛣️ Roadmap
-
-- [ ] Add multilingual **README.md** support
-  - [x] 🇺🇦 Ukrainian
-  - [x] 🇵🇱 Polish
-  - [ ] 🇩🇪 German
-- [ ] Write instructions for developers (package assembly)
-- [ ] ~Rewrite the function of creating **deb-packages** to support different versions of [**Ubuntu**](https://ubuntu.com/)~ - ❌ Closed
-- [x] Add installation options such as **Snap**, ~**AUR**, **RPM**~
-  - [x] **Snap**
-  - [ ] ~**AUR**~ - ❌ Closed
-  - [ ] ~**RPM**~ - ❌ Closed
-
 ## 🤝 Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -291,7 +258,7 @@ You can start developing on [**GitHub Codespaces**][codespaces-link] right away
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cli-stuff/dotload?quickstart=1)
 
-This repository has ⚡[**prebuilds**][about-prebuilds] that allow you to **skip** installing packages and tools.
+This repository has ⚡[**prebuilds**](https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds) that allow you to **skip** installing packages and tools.
 
 Or use the usual method on your computer:
 
@@ -307,13 +274,13 @@ Also, please read our [**Code of Conduct**](CODE_OF_CONDUCT.md), and follow it i
 
 ## 📝 License
 
-This project is [**MIT**][mit-license-link] licensed.
+This project is [**MIT**](https://opensource.org/license/MIT) licensed.
 
 See [**LICENSE**](LICENSE)
 
 ## 📨 Contact
 
-**Telegram:** [**@okineadev**][telegram-link]
+**Telegram:** [@okineadev](https://t.me/okineadev)
 
 ## ❤️ Support
 
@@ -324,7 +291,6 @@ If you liked this tool - I would be very grateful if you could support me financ
 Here are the details for transfers:
 
 - 🍩 **Donatello**: <https://donatello.to/okineadev>
-- 💎 **TON wallet**: `UQBaBIBtKJpdwc4jKSGd70LZyQnEf-Nx5edzZlZAAGkHnZ7E`
 
 [github-release-date]: https://img.shields.io/github/release-date/cli-stuff/dotload
 [github-release-page]: https://github.com/cli-stuff/dotload/releases/latest
@@ -334,6 +300,3 @@ Here are the details for transfers:
 [made-with-love]: https://img.shields.io/badge/made_with-%E2%9D%A4%EF%B8%8F-white
 [github-stars]: https://img.shields.io/github/stars/cli-stuff/dotload
 [codespaces-link]: https://github.com/features/codespaces
-[about-prebuilds]: https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds
-[telegram-link]: https://t.me/okineadev 'Telegram link'
-[mit-license-link]: https://opensource.org/license/MIT
