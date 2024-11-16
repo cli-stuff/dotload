@@ -1,3 +1,6 @@
 {
-  "commentTranslate.targetLanguage": "en"
+	"commentTranslate.targetLanguage": "en",
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+	}
 }

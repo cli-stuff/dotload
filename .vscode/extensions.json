@@ -1,11 +1,9 @@
 {
-  "recommendations": [
-    "EditorConfig.EditorConfig",
-    "DavidAnson.vscode-markdownlint",
-    "mads-hartmann.bash-ide-vscode",
-    "docsmsft.docs-yaml",
-    "shardulm94.trailing-spaces",
-    "redhat.vscode-yaml",
-    "bierner.markdown-checkbox"
-  ]
+	"recommendations": [
+		"DavidAnson.vscode-markdownlint",
+		"docsmsft.docs-yaml",
+		"shardulm94.trailing-spaces",
+		"esbenp.prettier-vscode",
+		"bierner.markdown-checkbox"
+	]
 }

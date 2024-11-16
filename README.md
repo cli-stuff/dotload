@@ -16,33 +16,17 @@
     </picture>
   </a>
 
-  <h3 align="center">dotload</h3>
-
-  <p align="center">
-    <p>
-    <b>dotload</b> - This is a <b>simple</b>, <b>intuitive</b> and <b>fast</b>⚡ tool for installing configurations (dotfiles) and other necessary tools on any machine!</p>
-    <a href="#%EF%B8%8F-installation"><b>Installation</b></a>
-    ·
-    <a href="https://github.com/cli-stuff/dotload/issues/new?labels=bug&template=bug_report.md"><b>Report Bug</b></a>
-    ·
-    <a href="https://github.com/cli-stuff/dotload/issues/new?labels=enhancement&template=feature_request.md"><b>Request Feature</b></a>
+  **dotload** - This is a **simple**, **intuitive** and **fast**⚡ tool for installing configurations (dotfiles) and other necessary tools on any machine!
+  [**Installation**](#%EF%B8%8F-installation) · [**Report Bug**](https://github.com/cli-stuff/dotload/issues/new?labels=bug&template=bug_report.md) · [**Request Feature**](https://github.com/cli-stuff/dotload/issues/new?labels=enhancement&template=feature_request.md)
 </div>
-
-<a href="docs/uk_UA/README.md"><img
-  height="20"
-  src="public/flag-ua.png"
-  alt="Ukrainian">
-</a>
-<a href="docs/pl/README.md"><img
-  height="20"
-  src="public/flag-pl.svg"
-  alt="Polish">
-</a>
 
 ## ℹ️ About the project
 
-![Screenshot](public/screenshot-dark.png#gh-dark-mode-only)
-![Screenshot](public/screenshot-light.png#gh-light-mode-only)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/screenshot-dark.png" alt="Screenshot">
+  <source media="(prefers-color-scheme: light)" srcset="public/screenshot-light.png" alt="Screenshot">
+  <img src="public/screenshot-dark.png" alt="Screenshot">
+</picture>
 
 `dotload` works by cloning the specified user's **GitHub** dotfiles repository
 
@@ -119,7 +103,7 @@ You can install `dotload` using the following package managers:
   1. Clone the repository
 
   ```bash
-  git clone https://github.com/cli-stuff/dotload.git --depth=1
+  git clone https://github.com/cli-stuff/dotload.git
   ```
 
   2. Go to the project folder
@@ -254,7 +238,7 @@ or make it optional in `dotload.conf`, for this read the [**dotload.conf documen
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-You can start developing on [**GitHub Codespaces**][codespaces-link] right away
+You can start developing on [**GitHub Codespaces**](https://github.com/features/codespaces) right away
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cli-stuff/dotload?quickstart=1)
 
@@ -282,7 +266,7 @@ See [**LICENSE**](LICENSE)
 
 **Telegram:** [@okineadev](https://t.me/okineadev)
 
-## ❤️ Support
+<!-- ## ❤️ Support
 
 This project is completely **free** and **open source**.
 
@@ -290,7 +274,7 @@ If you liked this tool - I would be very grateful if you could support me financ
 
 Here are the details for transfers:
 
-- 🍩 **Donatello**: <https://donatello.to/okineadev>
+- 🍩 **Donatello**: <https://donatello.to/okineadev> -->
 
 [github-release-date]: https://img.shields.io/github/release-date/cli-stuff/dotload
 [github-release-page]: https://github.com/cli-stuff/dotload/releases/latest
@@ -299,4 +283,3 @@ Here are the details for transfers:
 [github-license]: https://img.shields.io/github/license/cli-stuff/dotload
 [made-with-love]: https://img.shields.io/badge/made_with-%E2%9D%A4%EF%B8%8F-white
 [github-stars]: https://img.shields.io/github/stars/cli-stuff/dotload
-[codespaces-link]: https://github.com/features/codespaces
