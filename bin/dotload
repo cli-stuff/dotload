@@ -10,11 +10,6 @@ DOTFILES_DIR="$HOME/.dotload"
 NOTES=""
 DEFAULT_DOTFILES_REPO="dotfiles"
 
-if [[ $(echo "$0" | cut -c1-6) == "/snap/" ]]; then
-    HOME="/home/$(whoami)"
-    NOTES="Snap version "
-fi
-
 hyperlink() {
     echo -e "\e]8;;$1\e\\$2\e]8;;\e\\"
 }

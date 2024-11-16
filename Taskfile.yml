@@ -1,21 +1,8 @@
-version: '3'
+version: "3"
 
 tasks:
-  clean:
-    cmd: ./scripts/clean.sh
-
   install:
     cmd: ./scripts/install-from-source.sh
 
   uninstall:
     cmd: sudo rm "${PREFIX}/bin/dotload"
-
-  build-deb:
-    cmd: ./scripts/deb-package.sh {{.CLI_ARGS}}
-    silent: true
-
-  build-snap:
-    cmd: ./scripts/snap-package.sh {{.CLI_ARGS}}
-
-  generate-checksum:
-    cmd: ./scripts/generate-checksum.sh

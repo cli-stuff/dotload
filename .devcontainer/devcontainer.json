@@ -1,34 +1,32 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-  "name": "dotload",
-  "image": "mcr.microsoft.com/devcontainers/base:jammy",
-  "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/eitsupi/devcontainer-features/go-task:1": {},
-    "ghcr.io/jungaretti/features/make:1": {}
-  },
+	"name": "dotload",
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/eitsupi/devcontainer-features/go-task:1": {},
+		"ghcr.io/jungaretti/features/make:1": {}
+	},
 
-  "privileged": true,
+	"privileged": true,
 
-  "onCreateCommand": "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections && sudo apt update && sudo apt install devscripts debhelper -y",
-
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "resmon.show.battery": false,
-        "resmon.show.cpufreq": false
-      },
-      "extensions": [
-        "EditorConfig.EditorConfig",
-        "DavidAnson.vscode-markdownlint",
-        "mads-hartmann.bash-ide-vscode",
-        "docsmsft.docs-yaml",
-        "shardulm94.trailing-spaces",
-        "me-dutour-mathieu.vscode-github-actions",
-        "redhat.vscode-yaml",
-        "bierner.markdown-checkbox"
-      ]
-    }
-  }
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"resmon.show.battery": false,
+				"resmon.show.cpufreq": false
+			},
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"DavidAnson.vscode-markdownlint",
+				"mads-hartmann.bash-ide-vscode",
+				"docsmsft.docs-yaml",
+				"shardulm94.trailing-spaces",
+				"me-dutour-mathieu.vscode-github-actions",
+				"redhat.vscode-yaml",
+				"bierner.markdown-checkbox"
+			]
+		}
+	}
 }

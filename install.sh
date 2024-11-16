@@ -81,27 +81,9 @@ available() {
 current_step=0
 steps=3
 
-if [[ ! $SKIP_CHECKSUM_VALIDATION == "true" ]]; then
-    ((steps++))
-fi
-
 step() {
     ((current_step++))
     write_log "[$current_step/$steps] \e[1m$1\e[0m"
-}
-
-shasum_cmd=""
-if available sha256; then
-    shasum_cmd="sha256sum"
-elif available shasum; then
-    shasum_cmd="shasum -a 256"
-else
-    SKIP_CHECKSUM_VALIDATION="true"
-    write_log "Skipping checksum validation"
-fi
-
-validate_checksum() {
-    log $shasum_cmd --quiet --status -c $@
 }
 
 cd "$TEMP_DIR"
@@ -110,23 +92,6 @@ echo ""
 
 step "Downloading executable"
 log curl -LO --progress-bar "$EXECUTABLE_LINK"
-
-if [[ ! $SKIP_CHECKSUM_VALIDATION == "true" ]]; then
-    # ((steps++))
-    step "Validating checksum"
-    log curl -LOs "$EXECUTABLE_LINK.sha256"
-
-    # File integrity check
-    if validate_checksum dotload.sha256; then
-        write_log "✅ Checksum validated"
-    else
-        write_log "❌ The checksum is invalid, please try again"
-        write_log "    If the result is the same - report the error at this link: https://github.com/cli-stuff/dotload/issues/new?assignees=okineadev&labels=bug&template=bug_report.md&title=[Bug]:+invalid+checksum"
-
-        log rm -rf "$TEMP_DIR"
-        exit 1
-    fi
-fi
 
 # Makes the script executable
 log chmod +x dotload
