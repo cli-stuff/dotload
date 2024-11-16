@@ -6,7 +6,6 @@
 ![Made with love][made-with-love]
 ![GitHub Repo stars][github-stars]
 
-<!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://github.com/cli-stuff/dotload">
     <!-- https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#specifying-the-theme-an-image-is-shown-to -->
@@ -102,7 +101,7 @@ You can install `dotload` using the following package managers:
 </details>
 
 <details>
-  <summary><b>With install.sh (Reccomended) ✅</b></summary>
+  <summary><b>With install.sh (Reccommended) ✅</b></summary>
   <br/>
 
   With this method, you can install **dotload** on almost **any system**, including **Termux**
@@ -159,7 +158,7 @@ You can install `dotload` using the following package managers:
   make install
   ```
 
-  > 💡 Tip: If you prefer to use the more modern [**task**](https://taskfile.dev/) instead of [**GNU make**](https://www.gnu.org/software/make/) , you can use this command:
+  > 💡 Tip: If you prefer to use the more modern [**task**](https://taskfile.dev/) instead of [**GNU make**](https://www.gnu.org/software/make/), you can use this command:
 
   ```bash
   task install
