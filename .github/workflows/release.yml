@@ -26,7 +26,7 @@ jobs:
       - name: 📥 Clone repository
         uses: actions/checkout@v4.2.2
 
-      - name: ✅ Attest artifacts
+      - name: ✅ Attest binary
         uses: actions/attest-build-provenance@v1.4.4
         # Read: https://docs.github.com/en/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds
         with:

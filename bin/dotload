@@ -7,7 +7,6 @@
 # shellcheck disable=SC2143
 
 DOTFILES_DIR="$HOME/.dotload"
-NOTES=""
 DEFAULT_DOTFILES_REPO="dotfiles"
 
 hyperlink() {
@@ -15,7 +14,7 @@ hyperlink() {
 }
 
 # Prints the header for the dotload script
-echo -e "$NOTES\e[1m($(hyperlink "https://github.com/cli-stuff/dotload" "GitHub"))\e[0m"
+echo -e "\e[1m($(hyperlink "https://github.com/cli-stuff/dotload" "GitHub"))\e[0m"
 echo ""
 
 error_msg() {

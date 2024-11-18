@@ -18,13 +18,10 @@
 				"resmon.show.cpufreq": false
 			},
 			"extensions": [
-				"EditorConfig.EditorConfig",
 				"DavidAnson.vscode-markdownlint",
-				"mads-hartmann.bash-ide-vscode",
 				"docsmsft.docs-yaml",
 				"shardulm94.trailing-spaces",
-				"me-dutour-mathieu.vscode-github-actions",
-				"redhat.vscode-yaml",
+				"esbenp.prettier-vscode",
 				"bierner.markdown-checkbox"
 			]
 		}
