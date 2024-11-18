@@ -10,7 +10,7 @@
     </picture>
   </a>
 
-<br><br>
+<br>
 
 **dotload** - **Simple** and **intuitive** tool for installing dotfiles on any machine!
 
