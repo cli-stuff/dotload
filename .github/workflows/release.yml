@@ -1,14 +1,9 @@
-name: Build packages for release
+name: Release
 
 on:
   release:
     types:
       - published
-
-permissions:
-  id-token: write
-  attestations: write
-  contents: write
 
 jobs:
   build:
@@ -17,14 +12,16 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    steps:
-      - name: 🏷️ Check tag name
-        run: |
-          tag="${{ github.ref_name }}"
-          echo "$tag" | grep -Pq "^v\d+\.\d+\.\d+$" || (echo "::error::Tag name '$tag' does not correct." && exit 1)
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
 
-      - name: 📥 Clone repository
+    steps:
+      - name: 📥 Checkout
         uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
 
       - name: ✅ Attest binary
         uses: actions/attest-build-provenance@v1.4.4
