@@ -41,5 +41,5 @@ jobs:
         with:
           formula-name: dotload
           homebrew-tap: cli-stuff/homebrew-dotload
-          env:
-            COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
+        env:
+          COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
