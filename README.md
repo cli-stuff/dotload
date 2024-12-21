@@ -206,16 +206,13 @@ This project is [**MIT**](https://opensource.org/license/MIT) licensed.
 
 See [**LICENSE**](LICENSE)
 
+## ❤️ Support
+
+If you like this project, consider supporting it by starring ⭐ it on GitHub, sharing it with your friends, or buying me a coffee ☕:
+
+- <https://send.monobank.ua/jar/6rUVs4yasg>
+- <https://donatello.to/okineadev>
+
 ## 📨 Contact
 
 **Telegram:** [@okineadev](https://t.me/okineadev)
-
-<!-- ## ❤️ Support
-
-This project is completely **free** and **open source**.
-
-If you liked this tool - I would be very grateful if you could support me financially
-
-Here are the details for transfers:
-
-- 🍩 **Donatello**: <https://donatello.to/okineadev> -->
