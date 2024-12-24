@@ -212,7 +212,4 @@ If you like this project, consider supporting it by starring ⭐ it on GitHub, s
 
 - <https://send.monobank.ua/jar/6rUVs4yasg>
 - <https://donatello.to/okineadev>
-
-## 📨 Contact
-
-**Telegram:** [@okineadev](https://t.me/okineadev)
+- 
