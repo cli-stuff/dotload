@@ -208,4 +208,4 @@ See [**LICENSE**](LICENSE)
 
 ## ❤️ Support
 
-If you like this project, consider supporting it by starring ⭐ it on GitHub, sharing it with your friends, or [buying me a coffee ☕](https://github.com/cli-stuff/apr?sponsor=1)
+If you like this project, consider supporting it by starring ⭐ it on GitHub, sharing it with your friends, or [buying me a coffee ☕](https://github.com/cli-stuff/dotload?sponsor=1)
