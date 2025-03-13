@@ -17,29 +17,6 @@ hyperlink() {
 echo -e "\e[1m($(hyperlink "https://github.com/cli-stuff/dotload" "GitHub"))\e[0m"
 echo ""
 
-error_msg() {
-    local key="$1"
-    local value="$2"
-    local message="$3"
-
-    echo -e "\e[1;31mERROR!\e[0m"
-    echo ""
-    echo -e "  \e[1mEntered $key:\e[0m \"$value\""
-    echo -e "  $message"
-    echo ""
-
-    exit 1
-}
-
-# Function to check if the repository exists
-check_repo_exists() {
-    if ! git ls-remote "$1" HEAD >/dev/null 2>&1; then
-        echo -e "  Repository does not exist: \e[4m$repo_url\e[0m"
-        echo ""
-        exit 1
-    fi
-}
-
 # Function to read a value from the dotload.conf file
 read_declaration() {
     local declaration="$DOTFILES_DIR/dotload.conf"
@@ -105,30 +82,26 @@ dotload() {
             local specified_branch="$2"
         fi
 
-        # Validate the specified branch
-        if [[ -n "$specified_branch" || -z "$specified_branch" ]]; then
-            validate "branch" "$specified_branch"
-            branch="--branch=$specified_branch"
-        fi
+        branch="--branch=$specified_branch"
     fi
 
     local username
     local repo_url="$1"
     local repo_name
 
-    if [[ $(echo "$1" | grep -E '^@[^\s@]+(/\S+|$)$') ]]; then
-        if [[ $(echo "$1" | grep -E '^@[^\s@]+/\S+$') ]]; then
+    if [[ "$1" == @* ]]; then
+        if [[ "$1" == *@*/* ]]; then
             username=$(echo "$1" | cut -d '/' -f 1 | cut -d '@' -f 2)
             repo_name=$(echo "$1" | cut -d '/' -f 2)
-        elif [[ $1 =~ ^@[^\s@]+$ ]]; then
+        else
             username=${1##*@}
-            local repo_name="$DEFAULT_DOTFILES_REPO"
+            repo_name="$DEFAULT_DOTFILES_REPO"
         fi
 
         repo_url="https://github.com/$username/$repo_name.git"
     else
-        username="$(echo "$repo_url" | sed -E 's@^.+/([^/]+)/.*$@\1@')"
-        repo_name="$(echo "$repo_url" | sed -E 's@^.+/[^/]+/([^/.]+)\.git$@\1@')"
+        username="$(basename $(dirname "$repo_url"))"
+        repo_name="$(basename "$repo_url" .git)"
     fi
 
     # Check if dotfiles directory already exists and is up to date
@@ -150,9 +123,6 @@ dotload() {
         cd "$current_dir"
         unset current_dir
     else
-        # Check if the repository exists
-        check_repo_exists "$repo_url"
-
         if [ -d "$DOTFILES_DIR" ]; then
             echo -e "Replacing dotfiles with user files \e[1m@$username\e[0m."
             rm -rf "$DOTFILES_DIR"
