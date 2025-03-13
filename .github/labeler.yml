@@ -1,4 +1,10 @@
-docs: ["README.md", "docs/*"]
-workflows: ".github/workflows/*"
-feature:
-  - head-branch: ["^feature", "feature"]
+docs:
+  - changed-files:
+    - any-glob-to-any-file:
+      - README.md
+      - docs/*
+
+workflows:
+  - changed-files:
+    - any-glob-to-any-file:
+      - .github/workflows/*
