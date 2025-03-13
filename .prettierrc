@@ -4,12 +4,6 @@
 	"printWidth": 120,
 	"overrides": [
 		{
-			"files": "*.html",
-			"options": {
-				"tabWidth": 2
-			}
-		},
-		{
 			"files": "*.yml",
 			"options": {
 				"tabWidth": 2

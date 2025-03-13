@@ -1,8 +1,0 @@
-version: "3"
-
-tasks:
-  install:
-    cmd: ./scripts/install-from-source.sh
-
-  uninstall:
-    cmd: ./uninstall.sh

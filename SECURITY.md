@@ -5,6 +5,6 @@
 > [!WARNING]
 > Do not report security vulnerabilities in issues!
 
-If you notice a security issue with this tool, you can report it to me via email, Telegram, or Element:
+If you notice a security issue with this tool, you can report it to me via email:
 
-- **Telegram**: <https://t.me/okineadev>
+- [hi@okinea.dev](mailto:hi@okinea.dev)

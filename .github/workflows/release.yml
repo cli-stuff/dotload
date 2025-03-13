@@ -27,19 +27,9 @@ jobs:
         uses: actions/attest-build-provenance@v1.4.4
         # Read: https://docs.github.com/en/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds
         with:
-          subject-path: |
-            bin/dotload
+          subject-path: bin/dotload
 
       - name: ⬆️ Upload files to release
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            bin/dotload
-
-      - name: 🍺 Bump Homebrew formula
-        uses: mislav/bump-homebrew-formula-action@v3
-        with:
-          formula-name: dotload
-          homebrew-tap: cli-stuff/homebrew-dotload
-        env:
-          COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
+          files: bin/dotload

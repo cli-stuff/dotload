@@ -54,60 +54,6 @@ You can run without installation on **any** OS with this command:
 bash <(curl -sL https://cutt.ly/dotload) @username
 ```
 
-If you want to install it on your system, you can run the following command:
-
-```bash
-curl -sL https://cutt.ly/dotload-install | bash
-```
-
-🗑️ **Uninstall**:
-
-```bash
-sudo rm ${PREFIX:-/usr$([ "$(uname)" = "Darwin" ] && echo "/local")}/bin/dotload && hash -r
-```
-
-> [!NOTE]
-> If you want to remove this tool from **Termux**, you need to run the above command without `sudo`
-
-### Additional installation methods
-
-<details>
-  <summary><b>Homebrew</b></summary>
-  <br/>
-
-With [**brew**](https://brew.sh/) you can install this tool on **macOS** (and **Linux** too)
-
-> ℹ️ Note: If you don't have [**brew**](https://brew.sh/) installed, install it **now** with this command:
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-  <hr/>
-
-📥 **Install**:
-
-```bash
-brew tap cli-stuff/dotload
-brew install dotload
-```
-
-</details>
-
-<details>
-  <summary><b>Termux</b></summary>
-  <br/>
-
-You will also receive further updates with this method
-
-```bash
-# Add Termux User Repository
-pkg install tur-repo
-pkg update && pkg install dotload
-```
-
-</details>
-
 ### Compatibility table
 
 | <div><img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" alt="Linux logo" width="30"/></div> **Linux** | <div><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Termux.svg" alt="Termux logo" width="30"/></div> **Termux** | <div><img src="public/macos-dark-logo.svg#gh-light-mode-only" alt="macOS logo" width="30"/><img src="public/macos-light-logo.svg#gh-dark-mode-only" alt="macOS logo" width="30"/></div> **macOS** | <div><img src="https://github.com/cli-stuff/dotload/assets/81070564/99544c04-51e7-41b5-95f7-0828cfc97617" alt="Windows logo" width="30"/></div> **Windows** (on [msys shell](https://www.msys2.org/)) |
@@ -127,9 +73,6 @@ Where `username` is the **GitHub username** whose dotfiles you want to clone.
 `repo_name` - Name of your **dotfiles repository**, if not specified - `dotfiles` name will be used by default
 
 You can also use URLs of repositories such as **GitLab**, **Codeberg**, etc.
-
-> [!WARNING]
-> The username cannot contain emojis, spaces or other non-standard characters
 
 ### Advanced Usage
 
@@ -185,8 +128,6 @@ Contributions are what make the open-source community such an amazing place to l
 You can start developing on [**GitHub Codespaces**](https://github.com/features/codespaces) right away
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/cli-stuff/dotload?quickstart=1)
-
-This repository has ⚡[**prebuilds**](https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds) that allow you to **skip** installing packages and tools.
 
 Or use the usual method on your computer:
 

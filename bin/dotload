@@ -31,63 +31,6 @@ error_msg() {
     exit 1
 }
 
-validate() {
-    local validate_type="$1"
-    local string="$2"
-    local pretty_name
-    local max_lenght
-    local check_punctuations="true"
-
-    if [[ "$1" == "username" ]]; then
-        validate_type="username"
-        pretty_name="Username"
-        max_lenght=39
-
-    elif [[ "$1" == "branch" ]]; then
-        validate_type="branch name"
-        pretty_name="Branch name"
-        max_lenght=255
-
-    elif [[ "$1" == "repo_name" ]]; then
-        validate_type="repo name"
-        pretty_name="Repo name"
-        max_lenght=100
-
-    elif [[ "$1" == "url" ]]; then
-        validate_type="URL"
-        pretty_name="URL"
-        max_lenght=2048
-        check_punctuations="false"
-    fi
-
-    if [[ ${#string} -gt $max_lenght ]]; then
-        error_msg "$validate_type" "$string" "$pretty_name should not exceed \e[1m$max_lenght\e[0m characters."
-
-    elif [ -z "$string" ]; then
-        error_msg "$validate_type" "$string" "$pretty_name cannot be empty"
-
-    elif [[ "$1" =~ ^(username|branch)$ && "$string" =~ ^-.*$ ]]; then
-        error_msg "$validate_type" "$string" "$pretty_name cannot have '-' character at start."
-    fi
-
-    # Check for invalid characters in the username
-    if [[ "$string" =~ [[:space:]] ]]; then
-        error_msg "$validate_type" "$string" "$pretty_name contains spaces which are \e[1;4;31mnot allowed\e[0m."
-    elif [[ "$check_punctuations" == "true" && "$string" =~ [[:punct:]] ]]; then
-        error_msg "$validate_type" "$string" "$pretty_name contains punctuation characters or emoji which are \e[1;4;31mnot allowed\e[0m."
-    elif [[ "$string" =~ [[:cntrl:]] ]]; then
-        error_msg "$validate_type" "$string" "$pretty_name contains control characters which are \e[1;4;31mnot allowed.\e[0m"
-    elif [[ "$string" =~ [[:print:]] && ! "$string" =~ [[:graph:]] ]]; then
-        error_msg "$validate_type" "$string" "$pretty_name contains non-printable characters which are \e[1;4;31mnot allowed.\e[0m"
-    fi
-
-    if [[ "$validate_type" == "URL" ]]; then
-        if [[ ! $(echo "$string" | grep -E '^(http[s]|git@).*$') ]]; then
-            error_msg "$validate_type" "$string" "Invalid URL, link can starts only with this protocols: '\e[1mhttp\e[0m', '\e[1mhttps\e[0m', ssh ('\e[1mgit@\e[0m')"
-        fi
-    fi
-}
-
 # Function to check if the repository exists
 check_repo_exists() {
     if ! git ls-remote "$1" HEAD >/dev/null 2>&1; then
@@ -170,27 +113,10 @@ dotload() {
     fi
 
     local username
-    local repo_url
+    local repo_url="$1"
     local repo_name
 
-    if [[ $(echo "$1" | grep -E '^((http[s]://|^)(\S+\.\S+)*/|git@\S+\.\S+:)\S+/\S+(\.git|$)$') ]]; then
-        if [[ $(echo "$1" | grep -E '^[a-zA-Z0-9-]+\.[a-zA-Z]+(/[a-zA-Z0-9-]+){2}(\.git|$)$') ]]; then
-            # Append https
-            repo_url="https://$1"
-        else
-            repo_url="$1"
-        fi
-
-        if [[ ! $repo_url =~ \.git$ ]]; then
-            repo_url="$repo_url.git"
-        fi
-
-        validate "url" "$repo_url"
-
-        username="$(echo "$repo_url" | sed -E 's@^.+/([^/]+)/.*$@\1@')"
-        repo_name="$(echo "$repo_url" | sed -E 's@^.+/[^/]+/([^/.]+)\.git$@\1@')"
-
-    elif [[ $(echo "$1" | grep -E '^@[^\s@]+(/\S+|$)$') ]]; then
+    if [[ $(echo "$1" | grep -E '^@[^\s@]+(/\S+|$)$') ]]; then
         if [[ $(echo "$1" | grep -E '^@[^\s@]+/\S+$') ]]; then
             username=$(echo "$1" | cut -d '/' -f 1 | cut -d '@' -f 2)
             repo_name=$(echo "$1" | cut -d '/' -f 2)
@@ -200,11 +126,10 @@ dotload() {
         fi
 
         repo_url="https://github.com/$username/$repo_name.git"
+    else
+        username="$(echo "$repo_url" | sed -E 's@^.+/([^/]+)/.*$@\1@')"
+        repo_name="$(echo "$repo_url" | sed -E 's@^.+/[^/]+/([^/.]+)\.git$@\1@')"
     fi
-
-    # Validate the username
-    validate "username" "$username"
-    validate "repo_name" "$repo_name"
 
     # Check if dotfiles directory already exists and is up to date
     if [[ -d "$DOTFILES_DIR" && "$(git -C "$DOTFILES_DIR" remote get-url origin)" == "$repo_url" && -z $branch ]]; then
@@ -333,28 +258,8 @@ dotload() {
     echo -e "\e[1;32mDone!\e[0m"
 }
 
-print_usage() {
-    echo "Usage: dotload [@username/[repo_name]] | <repo_url>] [branch]"
-    echo ""
-    echo "Options:"
-    echo "  @username   The username of the GitHub user whose dotfiles you want to clone."
-    echo "  [repo_name] (Optional) The name of the git repository from which you want to clone dotfiles."
-    echo "              If not specified, the name \"dotfiles\" will be used by default"
-    echo ""
-    echo "  <repo_url>  The URL of the git repository from which you want to clone dotfiles."
-    echo "  branch      (Optional) The branch of the repository you want to clone. If not specified, the default branch is used."
-    echo ""
-    echo "Examples:"
-    echo "  dotload @username"
-    echo "  dotload @username/dotfiles"
-    echo "  dotload @username dev-branch"
-    echo "  dotload https://github.com/username/dotfiles"
-    echo "  dotload https://github.com/username/dotfiles dev-branch"
-    echo ""
-}
-
 # Function to print the help information for the dotload script
-print_dotload_help() {
+print_help() {
     echo "dotload - A simple script to download dotfiles from a git repository"
     echo ""
     echo "Usage:"
@@ -378,15 +283,8 @@ print_dotload_help() {
 
 # Check if the script is invoked with no arguments or with help option
 if [[ -z $1 || $1 == "--help" || $1 == "help" ]]; then
-    print_usage
-
-# Check if the script is invoked with a username
-elif [[ $(echo "$1" | grep -E '^@[^\s@]+(/\S+|$)$') || $(echo "$1" | grep -E '^((http[s]://|^)(\S+\.\S+)*/|git@\S+\.\S+:)\S+/\S+(\.git|$)$') ]]; then
-    if [[ $2 == "--help" ]]; then
-        print_dotload_help
-        exit 0
-    fi
-    dotload "$@"
+    print_help
+    exit 0
 else
-    echo -e "Unknown command.\nSee '$0 --help'"
+    dotload "$@"
 fi
